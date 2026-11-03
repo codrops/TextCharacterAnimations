@@ -1,0 +1,41 @@
+/* 07 Multi-cursor */
+
+/* The carets are placed relative to the text */
+[data-effect='multi-cursor'] {
+	position: relative;
+}
+
+[data-effect='multi-cursor'] .char {
+	opacity: 0;
+}
+
+/* The layer over the text holding the carets */
+[data-effect='multi-cursor'] .cursors {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+
+/* A caret, moved to where its word's next letter goes */
+[data-effect='multi-cursor'] .cursor {
+	position: absolute;
+	left: 0;
+	top: 0;
+	white-space: nowrap;
+	color: var(--color-accent, #e23e1d);
+	visibility: hidden;
+	will-change: transform;
+}
+
+/* A thin bar as tall as a capital, on the baseline, centred on the gap
+   between two letters; thicker on big text */
+[data-effect='multi-cursor'] .cursor__bar {
+	--width: max(1.5px, 0.025em);
+	display: inline-block;
+	width: var(--width);
+	height: 0.7em;
+	margin: 0 calc(var(--width) / -2);
+	vertical-align: baseline;
+	background: currentColor;
+	transform-origin: 50% 100%;
+}

@@ -1,0 +1,22 @@
+/* 18 Photon */
+
+/* The WebGL canvas sits over the text */
+[data-effect='photon'] {
+	position: relative;
+}
+
+/* While the WebGL letters show, the DOM letters keep the layout and stay readable to screen readers, unseen */
+[data-effect='photon'].is-masked [data-line] {
+	color: transparent;
+}
+
+/* The WebGL letters, shown only while they animate; placed and sized from the script. The canvas can reach past the page margin, so it's out of the layout when hidden */
+[data-effect='photon'] .gl-text {
+	position: absolute;
+	pointer-events: none;
+	display: none;
+}
+
+[data-effect='photon'] .gl-text.is-visible {
+	display: block;
+}

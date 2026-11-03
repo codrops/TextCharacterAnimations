@@ -1,0 +1,501 @@
+/* Plus Jakarta Sans by Tokotype, SIL Open Font License 1.1, see fonts/OFL-PlusJakartaSans.txt.
+   Preloaded in the page, and drawn only once it's in, so nothing jumps from a fallback font. */
+@font-face {
+	font-family: 'Plus Jakarta Sans';
+	src: url('../fonts/PlusJakartaSans-Latin.woff2') format('woff2');
+	font-weight: 200 800;
+	font-style: normal;
+	font-display: block;
+}
+
+/* Host Grotesk by Element Type, SIL Open Font License 1.1, see fonts/OFL-HostGrotesk.txt.
+   For the big word on the first screen and the big texts. */
+@font-face {
+	font-family: 'Host Grotesk';
+	src: url('../fonts/HostGrotesk-Latin.woff2') format('woff2');
+	font-weight: 300 800;
+	font-style: normal;
+	font-display: block;
+}
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+	/* 15px at the browser default, still scales with the visitor's font size setting */
+	font-size: 93.75%;
+	--color-text: rgb(255 255 255 / 50%);
+	--color-strong: rgb(255 255 255 / 88%);
+	--color-guess: rgb(255 255 255 / 40%);
+	/* one accent, for what an effect wants seen: a signal red-orange, warm against the cold silver ground */
+	--color-accent: #e23e1d;
+	--color-bg: #0b0b0b;
+	--color-line: rgb(255 255 255 / 12%);
+	--color-link: rgb(255 255 255 / 70%);
+	--color-link-hover: #fff;
+	/* the big word on the first screen, in the accent */
+	--color-hero: var(--color-accent);
+	--font: 'Plus Jakarta Sans', sans-serif;
+	--font-display: 'Host Grotesk', sans-serif;
+	/* page margin and column gutter, on a 15px spacing scale */
+	--margin: 15px;
+	--gutter: 15px;
+	/* The ground, fixed to the screen: a cold silver light falling from the
+	   top centre, a faint shade low on the left, and a fine grain over both */
+	--bg-light: rgb(200 204 212 / 17%);
+	--bg-light-soft: rgb(200 204 212 / 5%);
+	--bg-shade: rgb(160 170 185 / 6%);
+	--bg-layers: radial-gradient(ellipse at 50% 0%, var(--bg-light) 0%, var(--bg-light-soft) 35%, transparent 60%),
+		radial-gradient(ellipse at 10% 100%, var(--bg-shade) 0%, transparent 50%);
+	/* how strong the grain is: 0 for none, 1 for the tile as drawn */
+	--grain-opacity: 0.3;
+}
+
+body {
+	margin: 0;
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	font-family: var(--font);
+	font-weight: 400;
+	/* 13px */
+	font-size: 0.8667rem;
+	line-height: 1.4;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* The ground's light, fixed behind everything */
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background-image: var(--bg-layers);
+	background-repeat: no-repeat;
+}
+
+/* The grain over the ground, a tile of random white specks */
+body::after {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background: url(../img/grain.png) repeat;
+	background-size: 384px;
+	opacity: var(--grain-opacity);
+}
+
+a {
+	text-decoration: none;
+	color: var(--color-link);
+	cursor: pointer;
+}
+
+a:hover {
+	color: var(--color-link-hover);
+}
+
+a:focus-visible,
+button:focus-visible {
+	outline: 2px solid var(--color-link-hover);
+	outline-offset: 2px;
+}
+
+/* A section or the frame, reached from a link, takes the focus without a ring */
+[tabindex='-1']:focus {
+	outline: none;
+}
+
+/* Read by screen readers, not shown */
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	border: 0;
+}
+
+main {
+	padding: 30px var(--margin) 0;
+	/* effects that reach past the column, like long shadows, never scroll the page sideways */
+	overflow-x: clip;
+}
+
+/* One 12-column grid for the frame and every section, from 53em */
+.frame,
+.variation {
+	display: grid;
+	grid-template-columns: 100%;
+	column-gap: var(--gutter);
+}
+
+/* Codrops frame */
+
+.frame {
+	position: relative;
+	z-index: 1000;
+	grid-template-areas: 'title' 'links' 'tags' 'demos';
+	row-gap: 0.5rem;
+	justify-items: start;
+	pointer-events: none;
+}
+
+/* The Codrops ad, added to the frame on the live site after the page has
+   loaded: out of the flow in the top right corner, beside the title, links
+   and tags, so nothing moves when it arrives */
+body #cdawrap {
+	position: absolute;
+	top: 0;
+	right: 0;
+	max-width: 50%;
+	text-align: right;
+}
+
+.frame a {
+	pointer-events: auto;
+}
+
+/* Links and buttons whose underline wipes away on hover */
+.frame a,
+.pager a,
+.variation__replay,
+.end__top {
+	position: relative;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.frame a::before,
+.pager a::before,
+.variation__replay::before,
+.end__top::before {
+	content: '';
+	height: 1px;
+	width: 100%;
+	background: currentColor;
+	position: absolute;
+	left: 0;
+	top: 92%;
+	transition: transform 0.3s;
+	transform-origin: 0% 50%;
+}
+
+.frame a:hover::before,
+.pager a:hover::before,
+.pager a[aria-current='true']::before,
+.variation__replay:hover::before,
+.end__top:hover::before {
+	transform: scaleX(0);
+	transform-origin: 100% 50%;
+}
+
+.frame__title,
+.variation__title {
+	grid-area: title;
+	margin: 0;
+	font: inherit;
+	color: var(--color-strong);
+}
+
+.frame__links,
+.frame__tags,
+.frame__demos {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 1rem;
+}
+
+.frame__links {
+	grid-area: links;
+}
+
+.frame__tags {
+	grid-area: tags;
+	gap: 0.4rem;
+}
+
+/* The tags as dark grey pills, without the underline */
+.frame__tags a {
+	padding: 0.2rem 0.65rem;
+	border-radius: 999px;
+	background: #2a2a2a;
+}
+
+.frame__tags a::before {
+	content: none;
+}
+
+.frame__demos {
+	grid-area: demos;
+	font-variant-numeric: tabular-nums;
+}
+
+/* The variation numbers again, fixed at the top centre once the frame has
+   scrolled away, on a light pane of frosted glass that blurs the text
+   passing under it; the variation on screen is marked */
+.pager {
+	position: fixed;
+	z-index: 1001;
+	top: 18px;
+	left: 0;
+	right: 0;
+	width: max-content;
+	margin-inline: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0 1rem;
+	max-width: calc(100% - 2 * var(--margin));
+	padding: 0.55rem 1.1rem;
+	border-radius: 18px;
+	/* lighter at the top, like light catching the glass, with a soft shadow under it */
+	background: linear-gradient(180deg, rgb(255 255 255 / 15%), rgb(255 255 255 / 6%));
+	box-shadow: 0 10px 30px rgb(0 0 0 / 35%);
+	-webkit-backdrop-filter: blur(14px) saturate(140%);
+	backdrop-filter: blur(14px) saturate(140%);
+	font-variant-numeric: tabular-nums;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-0.6rem);
+	transition:
+		opacity 0.3s ease,
+		transform 0.5s cubic-bezier(0.33, 1, 0.68, 1),
+		visibility 0s 0.5s;
+}
+
+.pager.is-visible {
+	opacity: 1;
+	visibility: visible;
+	transform: none;
+	transition:
+		opacity 0.3s ease,
+		transform 0.5s cubic-bezier(0.33, 1, 0.68, 1),
+		visibility 0s;
+}
+
+.pager a[aria-current='true'] {
+	color: var(--color-link-hover);
+}
+
+/* The first screen: the hero word, and how the page works */
+
+.intro {
+	min-height: 80svh;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	gap: 30px;
+	padding-bottom: 60px;
+}
+
+.intro__hint {
+	margin: 0;
+}
+
+/* One big word whose letters slide up into view; its size is set by the
+   script to fill the width, and it shows only once it has been sized */
+.hero {
+	font-family: var(--font-display);
+	font-size: 36vw;
+	font-weight: 300;
+	line-height: 0.8;
+	letter-spacing: -0.04em;
+	white-space: nowrap;
+	color: var(--color-hero);
+	opacity: 0;
+}
+
+.hero.is-fitted {
+	opacity: 1;
+}
+
+/* The mask the letters rise through, with room above for the ascenders */
+.hero__word {
+	display: inline-flex;
+	align-items: baseline;
+	overflow: clip;
+	padding-top: 0.12em;
+	margin-top: -0.12em;
+}
+
+.hero__letter {
+	display: inline-block;
+	will-change: transform;
+}
+
+/* Both endings of the word in one place */
+.hero__ending {
+	display: inline-grid;
+}
+
+.hero__ending > span {
+	grid-area: 1 / 1;
+	display: inline-flex;
+	align-items: baseline;
+}
+
+/* Measures each word at 100px, unseen */
+.hero__probe {
+	position: absolute;
+	visibility: hidden;
+	font-size: 100px;
+	white-space: nowrap;
+}
+
+/* A variation: a heading row, then the text it animates */
+
+.variation {
+	min-height: 100svh;
+	align-content: start;
+	row-gap: 120px;
+	padding: 15px 0 180px;
+	border-top: 1px solid var(--color-line);
+}
+
+/* The last variation is only as tall as it needs to be, so the page ends with it */
+.variation:last-of-type {
+	min-height: 0;
+}
+
+.variation__head {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	grid-template-areas: 'num replay' 'title title' 'credit credit';
+	column-gap: var(--gutter);
+	align-items: baseline;
+}
+
+.variation__num {
+	grid-area: num;
+	font-variant-numeric: tabular-nums;
+}
+
+.variation__credit {
+	grid-area: credit;
+	margin: 0;
+}
+
+.variation__replay {
+	grid-area: replay;
+	justify-self: end;
+	padding: 0;
+	border: 0;
+	background: none;
+	font: inherit;
+	color: var(--color-link);
+	cursor: pointer;
+}
+
+.variation__replay:hover {
+	color: var(--color-link-hover);
+}
+
+.variation__text {
+	/* 15px, 20px from 53em */
+	font-size: 1rem;
+	line-height: 1.3;
+	color: var(--color-strong);
+	cursor: pointer;
+}
+
+.variation__text p {
+	margin: 0;
+}
+
+/* The same effect on a short, big text, so it can be felt at another size */
+.variation__text.variation__text--big {
+	font-family: var(--font-display);
+	font-weight: 300;
+	/* 44px, up to 128px */
+	font-size: clamp(2.9333rem, 8vw, 8.5333rem);
+	line-height: 1;
+	letter-spacing: -0.03em;
+}
+
+/* A big text of more than one line: the lines a little closer */
+.variation__text.variation__text--big:has([data-line] + [data-line]) {
+	line-height: 0.88;
+}
+
+/* Hidden until the script has split the lines, so no text flashes first */
+.js [data-line]:not(.is-ready) {
+	visibility: hidden;
+}
+
+/* Each effect's own styles are in css/variations/, scoped to its data-effect name */
+
+/* With reduced motion the texts don't replay on a click */
+@media (prefers-reduced-motion: reduce) {
+	.variation__text {
+		cursor: auto;
+	}
+}
+
+/* End of the page */
+
+.end {
+	display: flex;
+	align-items: flex-end;
+	padding: 30px 0;
+	border-top: 1px solid var(--color-line);
+}
+
+@media screen and (min-width: 53em) {
+	:root {
+		--margin: 30px;
+		--gutter: 30px;
+	}
+	.frame,
+	.variation {
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+	}
+	/* title, links and tags down the left, the variations in the centre, the ad on the right */
+	.frame {
+		grid-template-areas:
+			'title title title demos demos demos demos demos demos . . .'
+			'links links links demos demos demos demos demos demos . . .'
+			'tags tags tags demos demos demos demos demos demos . . .';
+		align-items: start;
+	}
+	.frame__demos {
+		justify-self: center;
+		justify-content: center;
+	}
+	body #cdawrap {
+		max-width: calc(25% - var(--gutter));
+	}
+	.variation__head {
+		grid-column: 1 / -1;
+		grid-template-columns: subgrid;
+		grid-template-areas: none;
+	}
+	.variation__num {
+		grid-column: 1;
+	}
+	.variation__title {
+		grid-column: 2 / 5;
+	}
+	.variation__credit {
+		grid-column: 5 / 10;
+	}
+	.variation__replay {
+		grid-column: 12;
+	}
+	/* the small text and the big one start together, under the title */
+	.variation__text {
+		grid-column: 2 / 12;
+		font-size: 1.3333rem;
+	}
+	.variation__text.variation__text--big {
+		grid-column: 2 / -1;
+	}
+}

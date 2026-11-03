@@ -1,0 +1,82 @@
+/* 15 Screen Reader */
+
+/* The focus box is placed relative to the text */
+[data-effect='screen-reader'] {
+	position: relative;
+}
+
+[data-effect='screen-reader'] .char {
+	opacity: 0;
+}
+
+/* The layer over the text holding the focus box, in the accent colour; the
+   effect sets the outline's thickness and corner radius for the text's size */
+[data-effect='screen-reader'] .focus {
+	position: absolute;
+	inset: 0;
+	color: var(--color-accent, #e23e1d);
+	pointer-events: none;
+	visibility: hidden;
+	will-change: opacity;
+}
+
+/* The box is drawn from eight pieces, so its outline keeps the same thickness
+   whatever the word's size: the corners only move, and the straight sides only
+   stretch along their length. Each is moved into place from the layer's top left. */
+[data-effect='screen-reader'] .focus__corner,
+[data-effect='screen-reader'] .focus__side {
+	position: absolute;
+	left: 0;
+	top: 0;
+	box-sizing: border-box;
+	transform-origin: 0 0;
+	will-change: transform;
+}
+
+/* A rounded corner of the outline, the same size at every word */
+[data-effect='screen-reader'] .focus__corner {
+	width: var(--radius, 0.18em);
+	height: var(--radius, 0.18em);
+	border: 0 solid currentColor;
+}
+
+[data-effect='screen-reader'] .focus__corner--top-left {
+	border-top-width: var(--stroke, 2px);
+	border-left-width: var(--stroke, 2px);
+	border-top-left-radius: var(--radius, 0.18em);
+}
+
+[data-effect='screen-reader'] .focus__corner--top-right {
+	border-top-width: var(--stroke, 2px);
+	border-right-width: var(--stroke, 2px);
+	border-top-right-radius: var(--radius, 0.18em);
+}
+
+[data-effect='screen-reader'] .focus__corner--bottom-left {
+	border-bottom-width: var(--stroke, 2px);
+	border-left-width: var(--stroke, 2px);
+	border-bottom-left-radius: var(--radius, 0.18em);
+}
+
+[data-effect='screen-reader'] .focus__corner--bottom-right {
+	border-bottom-width: var(--stroke, 2px);
+	border-right-width: var(--stroke, 2px);
+	border-bottom-right-radius: var(--radius, 0.18em);
+}
+
+/* A straight side, 100px long, stretched along its length between two corners */
+[data-effect='screen-reader'] .focus__side {
+	background: currentColor;
+}
+
+[data-effect='screen-reader'] .focus__side--top,
+[data-effect='screen-reader'] .focus__side--bottom {
+	width: 100px;
+	height: var(--stroke, 2px);
+}
+
+[data-effect='screen-reader'] .focus__side--left,
+[data-effect='screen-reader'] .focus__side--right {
+	width: var(--stroke, 2px);
+	height: 100px;
+}

@@ -1,0 +1,54 @@
+/* 06 Autocomplete */
+
+/* The caret and the guesses are placed relative to the text */
+[data-effect='autocomplete'] {
+	position: relative;
+}
+
+[data-effect='autocomplete'] .char {
+	opacity: 0;
+}
+
+/* The layer over the text holding the caret and the guesses */
+[data-effect='autocomplete'] .typist {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+
+/* The caret, moved to where the next letter goes */
+[data-effect='autocomplete'] .typist__caret {
+	position: absolute;
+	left: 0;
+	top: 0;
+	white-space: nowrap;
+	visibility: hidden;
+	will-change: transform;
+}
+
+/* A thin bar as tall as a capital, on the baseline, centred on the gap between two letters */
+[data-effect='autocomplete'] .typist__caret::before {
+	content: '';
+	display: inline-block;
+	width: 1.5px;
+	height: 0.7em;
+	margin: 0 -0.75px;
+	vertical-align: baseline;
+	background: currentColor;
+}
+
+/* A guess at the rest of the word or the next words, starting at the caret, on one line */
+[data-effect='autocomplete'] .ghost {
+	position: absolute;
+	left: 0;
+	top: 0;
+	white-space: nowrap;
+	color: var(--color-guess, rgb(255 255 255 / 40%));
+	visibility: hidden;
+}
+
+/* Inline blocks like the split characters, with plain spaces between words, so each letter of a guess sits where the typed one will */
+[data-effect='autocomplete'] .ghost__inner,
+[data-effect='autocomplete'] .ghost__letter {
+	display: inline-block;
+}

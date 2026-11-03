@@ -1,0 +1,10 @@
+/* 04 Loupe */
+
+/* Letters wait unseen until the lens reaches them. They swell from the
+   middle of their baseline, which the script measures, and take the accent
+   by as much as --lens says, from 0 to 1. */
+[data-effect='loupe'] .char {
+	opacity: 0;
+	color: color-mix(in srgb, var(--color-accent, #e23e1d) calc(var(--lens, 0) * 100%), currentColor);
+	transform-origin: 50% var(--baseline);
+}

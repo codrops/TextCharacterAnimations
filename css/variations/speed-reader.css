@@ -1,0 +1,17 @@
+/* 14 Speed Reader */
+
+/* Each word is hidden until it flashes at the reading point */
+[data-effect='speed-reader'] .word {
+	opacity: 0;
+}
+
+/* The marked letter of each word, in the accent while its word is at the
+   reading point and on its way to its place */
+[data-effect='speed-reader'] .char--mark {
+	color: var(--color-accent, #e23e1d);
+}
+
+/* and in the text's colour once its word is in place */
+[data-effect='speed-reader'] .is-placed .char--mark {
+	color: inherit;
+}

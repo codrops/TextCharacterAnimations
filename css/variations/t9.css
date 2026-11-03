@@ -1,0 +1,12 @@
+/* 09 T9 */
+
+[data-effect='t9'] .char {
+	opacity: 0;
+}
+
+/* The word being typed, in inverse, as on an old phone's screen; only its
+   typed letters show, so the box grows with them */
+[data-effect='t9'] .is-composing .char {
+	color: var(--color-bg, #0b0b0b);
+	background: var(--color-strong, rgb(255 255 255 / 88%));
+}

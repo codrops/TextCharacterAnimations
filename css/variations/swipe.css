@@ -1,0 +1,31 @@
+/* 08 Swipe */
+
+/* The trails are drawn relative to the text */
+[data-effect='swipe'] {
+	position: relative;
+}
+
+[data-effect='swipe'] .char {
+	opacity: 0;
+}
+
+/* The drawing over the text holding the trails, free to reach past it */
+[data-effect='swipe'] .trails {
+	position: absolute;
+	left: 0;
+	top: 0;
+	overflow: visible;
+	pointer-events: none;
+}
+
+/* A word's trail: round-ended strokes in the accent colour */
+[data-effect='swipe'] .trail {
+	visibility: hidden;
+}
+
+[data-effect='swipe'] .trail path {
+	fill: none;
+	stroke: var(--color-accent, #e23e1d);
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}

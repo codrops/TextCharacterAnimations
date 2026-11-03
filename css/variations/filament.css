@@ -1,0 +1,22 @@
+/* 16 Filament */
+
+/* The WebGL canvas sits over the text */
+[data-effect='filament'] {
+	position: relative;
+}
+
+/* While the WebGL letters show, the DOM letters keep the layout and stay readable to screen readers, unseen */
+[data-effect='filament'].is-masked [data-line] {
+	color: transparent;
+}
+
+/* The WebGL letters, shown only while they animate; placed and sized from the script. Its room for the halo reaches past the page margin on phones, so it's out of the layout when hidden */
+[data-effect='filament'] .gl-text {
+	position: absolute;
+	pointer-events: none;
+	display: none;
+}
+
+[data-effect='filament'] .gl-text.is-visible {
+	display: block;
+}

@@ -1,0 +1,22 @@
+/* 19 Caustics */
+
+/* The WebGL canvas sits over the text */
+[data-effect='caustics'] {
+	position: relative;
+}
+
+/* While the WebGL letters show, the DOM letters keep the layout and stay readable to screen readers, unseen */
+[data-effect='caustics'].is-masked [data-line] {
+	color: transparent;
+}
+
+/* The WebGL letters, shown only while they animate; placed and sized from the script. The canvas can reach past the page margin, so it's out of the layout when hidden */
+[data-effect='caustics'] .gl-text {
+	position: absolute;
+	pointer-events: none;
+	display: none;
+}
+
+[data-effect='caustics'] .gl-text.is-visible {
+	display: block;
+}

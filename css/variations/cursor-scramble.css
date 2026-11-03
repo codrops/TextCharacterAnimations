@@ -1,0 +1,34 @@
+/* 01 Cursor Scramble */
+
+/* The effect places its pieces against each line */
+[data-effect='cursor-scramble'] [data-line] {
+	position: relative;
+}
+
+[data-effect='cursor-scramble'] .char {
+	opacity: 0;
+}
+
+/* The guesses and the cursor, moved to where the next letter goes */
+[data-effect='cursor-scramble'] .typer {
+	position: absolute;
+	left: 0;
+	top: 0;
+	white-space: nowrap;
+	pointer-events: none;
+	visibility: hidden;
+	will-change: transform;
+}
+
+[data-effect='cursor-scramble'] .typer__guesses {
+	color: var(--color-guess, rgb(255 255 255 / 40%));
+}
+
+[data-effect='cursor-scramble'] .typer__cursor {
+	display: inline-block;
+	width: 0.45em;
+	height: 0.7em;
+	margin-left: 0.06em;
+	vertical-align: baseline;
+	background: currentColor;
+}

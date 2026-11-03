@@ -1,0 +1,16 @@
+/* 10 Find All */
+
+/* A character fades back from its highlight to the text's colour */
+[data-effect='find-all'] .char {
+	opacity: 0;
+	transition:
+		background-color 0.45s ease-out,
+		color 0.45s ease-out;
+}
+
+/* A match, highlighted at once */
+[data-effect='find-all'] .char.is-match {
+	color: var(--color-bg, #0b0b0b);
+	background-color: var(--color-accent, #e23e1d);
+	transition: none;
+}

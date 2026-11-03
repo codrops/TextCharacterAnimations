@@ -1,0 +1,24 @@
+/* 17 Photocopy */
+
+/* The WebGL canvas sits over the text */
+[data-effect='photocopy'] {
+	position: relative;
+}
+
+/* While the WebGL letters show, the DOM letters keep the layout and stay readable to screen readers, unseen */
+[data-effect='photocopy'].is-masked [data-line] {
+	color: transparent;
+}
+
+/* The WebGL letters, shown only while they animate; placed and sized from the
+   script. Their room for the noise reaches past the text, so they're out of
+   the layout when hidden */
+[data-effect='photocopy'] .gl-text {
+	position: absolute;
+	pointer-events: none;
+	display: none;
+}
+
+[data-effect='photocopy'] .gl-text.is-visible {
+	display: block;
+}

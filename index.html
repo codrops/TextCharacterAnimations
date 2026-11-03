@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Text Character Animations with GSAP | Codrops</title>
+		<meta
+			name="description"
+			content="Character by character text animations, one variation per section, played as you scroll or on demand. Made with GSAP SplitText, Flip, ScrollTrigger and ScrollSmoother, four of them with WebGL."
+		/>
+		<meta name="keywords" content="text animation, typing, splittext, flip, scrolltrigger, webgl, gsap" />
+		<meta name="author" content="Codrops" />
+		<link rel="canonical" href="https://tympanus.net/Demos/TextCharacterAnimations/" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Codrops" />
+		<meta property="og:title" content="Text Character Animations with GSAP" />
+		<meta
+			property="og:description"
+			content="Character by character text animations, one variation per section, played as you scroll or on demand. Made with GSAP SplitText, Flip, ScrollTrigger and ScrollSmoother, four of them with WebGL."
+		/>
+		<meta property="og:url" content="https://tympanus.net/Demos/TextCharacterAnimations/" />
+		<meta property="og:image" content="https://tympanus.net/Demos/TextCharacterAnimations/og-image.jpg" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@codrops" />
+		<meta name="twitter:title" content="Text Character Animations with GSAP" />
+		<meta
+			name="twitter:description"
+			content="Character by character text animations, one variation per section, played as you scroll or on demand. Made with GSAP SplitText, Flip, ScrollTrigger and ScrollSmoother, four of them with WebGL."
+		/>
+		<meta name="twitter:image" content="https://tympanus.net/Demos/TextCharacterAnimations/og-image.jpg" />
+		<link rel="icon" type="image/svg+xml" href="https://tympanus.net/favicon/favicon.svg" />
+		<link rel="shortcut icon" href="https://tympanus.net/favicon/favicon.ico" />
+		<link rel="preload" href="fonts/PlusJakartaSans-Latin.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="fonts/HostGrotesk-Latin.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/cursor-scramble.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/proofread.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/telegram.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/loupe.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/overtype.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/autocomplete.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/multi-cursor.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/swipe.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/t9.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/find-all.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/collaborators.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/live-captions.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/voice-note.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/speed-reader.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/screen-reader.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/filament.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/photocopy.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/photon.css" />
+		<link rel="stylesheet" type="text/css" href="css/variations/caustics.css" />
+		<script>
+			document.documentElement.className = 'js';
+		</script>
+		<!-- Added on the live server only, leave commented out in the repo -->
+		<!--script src="//tympanus.net/codrops/adpacks/analytics.js"></script-->
+	</head>
+	<body>
+		<div id="smooth-wrapper">
+			<div id="smooth-content">
+				<main>
+					<header class="frame" id="top">
+						<h1 class="frame__title">Text Character Animations with GSAP</h1>
+						<nav class="frame__links" aria-label="Demo links">
+							<a href="https://tympanus.net/codrops/hub/">All demos</a>
+							<a href="https://github.com/codrops/TextCharacterAnimations">GitHub</a>
+						</nav>
+						<nav class="frame__demos" aria-label="Variations">
+							<span class="frame__demos-label">Variations</span>
+							<a class="frame__demo" href="#v01">01</a>
+							<a class="frame__demo" href="#v02">02</a>
+							<a class="frame__demo" href="#v03">03</a>
+							<a class="frame__demo" href="#v04">04</a>
+							<a class="frame__demo" href="#v05">05</a>
+							<a class="frame__demo" href="#v06">06</a>
+							<a class="frame__demo" href="#v07">07</a>
+							<a class="frame__demo" href="#v08">08</a>
+							<a class="frame__demo" href="#v09">09</a>
+							<a class="frame__demo" href="#v10">10</a>
+							<a class="frame__demo" href="#v11">11</a>
+							<a class="frame__demo" href="#v12">12</a>
+							<a class="frame__demo" href="#v13">13</a>
+							<a class="frame__demo" href="#v14">14</a>
+							<a class="frame__demo" href="#v15">15</a>
+							<a class="frame__demo" href="#v16">16</a>
+							<a class="frame__demo" href="#v17">17</a>
+							<a class="frame__demo" href="#v18">18</a>
+							<a class="frame__demo" href="#v19">19</a>
+						</nav>
+						<nav class="frame__tags" aria-label="Tags">
+							<a href="https://tympanus.net/codrops/hub/tag/typography/">#typography</a>
+							<a href="https://tympanus.net/codrops/hub/tag/gsap/">#gsap</a>
+						</nav>
+					</header>
+					<section class="intro">
+						<div class="hero" aria-hidden="true"><span class="hero__word"></span></div>
+						<p class="intro__hint">Scroll to play each variation. Replay it from its heading, or click the text.</p>
+					</section>
+					<section class="variation" id="v01" data-variation="cursor-scramble" aria-labelledby="v01-title">
+						<header class="variation__head">
+							<span class="variation__num">01</span>
+							<h2 class="variation__title" id="v01-title">Cursor Scramble</h2>
+							<p class="variation__credit">After the help panel of <a href="https://seq.halfof8.com">SQNCR</a> by halfof8</p>
+							<button class="variation__replay" type="button" aria-controls="v01-text v01-big" aria-describedby="v01-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v01-text">
+							<p data-line>05:40. The harbour is still grey.</p>
+							<p data-line>Hana's father takes the boat out early,</p>
+							<p data-line>as if today were any other day.</p>
+							<p data-line>Her suitcase waits by the door.</p>
+							<p data-line>The boat answers her wave with one long note.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v01-big">
+							<p data-line>STILL GREY</p>
+						</div>
+					</section>
+					<section class="variation" id="v02" data-variation="proofread" aria-labelledby="v02-title">
+						<header class="variation__head">
+							<span class="variation__num">02</span>
+							<h2 class="variation__title" id="v02-title">Proofread</h2>
+							<button class="variation__replay" type="button" aria-controls="v02-text v02-big" aria-describedby="v02-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v02-text">
+							<p data-line>06:50. At the market, her grandmother</p>
+							<p data-line>rubs out a price the auctioneer got wrong</p>
+							<p data-line>and chalks the right one in, without a word.</p>
+							<p data-line>Hana carries ice from the truck.</p>
+							<p data-line>The gulls pretend not to watch.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v02-big">
+							<p data-line>WITHOUT A WORD</p>
+						</div>
+					</section>
+					<section class="variation" id="v03" data-variation="telegram" aria-labelledby="v03-title">
+						<header class="variation__head">
+							<span class="variation__num">03</span>
+							<h2 class="variation__title" id="v03-title">Telegram</h2>
+							<button class="variation__replay" type="button" aria-controls="v03-text v03-big" aria-describedby="v03-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v03-text">
+							<p data-line>09:30. The tide is out and the boats</p>
+							<p data-line>lean on the mud, waiting for the water.</p>
+							<p data-line>Hana walks between them in her father's boots</p>
+							<p data-line>and reads their names out loud.</p>
+							<p data-line>One of them still carries her mother's.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v03-big">
+							<p data-line>THE TIDE IS OUT</p>
+						</div>
+					</section>
+					<section class="variation" id="v04" data-variation="loupe" aria-labelledby="v04-title">
+						<header class="variation__head">
+							<span class="variation__num">04</span>
+							<h2 class="variation__title" id="v04-title">Loupe</h2>
+							<button class="variation__replay" type="button" aria-controls="v04-text v04-big" aria-describedby="v04-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v04-text">
+							<p data-line>11:00. At the ferry window, her grandmother</p>
+							<p data-line>writes Hana's ticket out by hand, bent close,</p>
+							<p data-line>the way she has written every timetable:</p>
+							<p data-line>tonight, the last crossing, one way.</p>
+							<p data-line>Hana reads it twice.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v04-big">
+							<p data-line>ONE WAY</p>
+						</div>
+					</section>
+					<section class="variation" id="v05" data-variation="overtype" aria-labelledby="v05-title">
+						<header class="variation__head">
+							<span class="variation__num">05</span>
+							<h2 class="variation__title" id="v05-title">Overtype</h2>
+							<button class="variation__replay" type="button" aria-controls="v05-text v05-big" aria-describedby="v05-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v05-text">
+							<p data-line data-from="11:00. At the ferry window, her grandmother">12:45. Lunch at the noodle counter,</p>
+							<p data-line data-from="writes Hana's ticket out by hand, bent close,">Hana and her grandmother side by side.</p>
+							<p data-line data-from="the way she has written every timetable:">The cook puts an extra egg in Hana's bowl</p>
+							<p data-line data-from="tonight, the last crossing, one way.">and says it was a mistake.</p>
+							<p data-line data-from="Hana reads it twice.">Nobody believes him. Nobody says so.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v05-big">
+							<p data-line data-from="ONE WAY">ONE EXTRA EGG</p>
+						</div>
+					</section>
+					<section class="variation" id="v06" data-variation="autocomplete" aria-labelledby="v06-title">
+						<header class="variation__head">
+							<span class="variation__num">06</span>
+							<h2 class="variation__title" id="v06-title">Autocomplete</h2>
+							<button class="variation__replay" type="button" aria-controls="v06-text v06-big" aria-describedby="v06-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v06-text">
+							<p data-line>18:30. The boats come in with the gulls,</p>
+							<p data-line>her father's last of all.</p>
+							<p data-line>He starts to say something about the catch,</p>
+							<p data-line>and Hana finishes the sentence for him,</p>
+							<p data-line>the way she always has.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v06-big">
+							<p data-line>BOATS COME BACK</p>
+						</div>
+					</section>
+					<section class="variation" id="v07" data-variation="multi-cursor" aria-labelledby="v07-title">
+						<header class="variation__head">
+							<span class="variation__num">07</span>
+							<h2 class="variation__title" id="v07-title">Multi-cursor</h2>
+							<button class="variation__replay" type="button" aria-controls="v07-text v07-big" aria-describedby="v07-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v07-text">
+							<p data-line>19:05. The neighbours come down to the pontoon</p>
+							<p data-line>and all talk to her at once:</p>
+							<p data-line>eat properly, write, don't trust the city,</p>
+							<p data-line>take this, and this, and this.</p>
+							<p data-line>Her father coils a rope already coiled.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v07-big">
+							<p data-line>ALL AT ONCE</p>
+						</div>
+					</section>
+					<section class="variation" id="v08" data-variation="swipe" aria-labelledby="v08-title">
+						<header class="variation__head">
+							<span class="variation__num">08</span>
+							<h2 class="variation__title" id="v08-title">Swipe</h2>
+							<button class="variation__replay" type="button" aria-controls="v08-text v08-big" aria-describedby="v08-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v08-text">
+							<p data-line>19:40. The café windows have fogged up,</p>
+							<p data-line>and Hana writes her name on the glass</p>
+							<p data-line>with one finger, in one long stroke,</p>
+							<p data-line>low down, where the cook will find it</p>
+							<p data-line>when he wipes the tables in the morning.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v08-big">
+							<p data-line>IN ONE STROKE</p>
+						</div>
+					</section>
+					<section class="variation" id="v09" data-variation="t9" aria-labelledby="v09-title">
+						<header class="variation__head">
+							<span class="variation__num">09</span>
+							<h2 class="variation__title" id="v09-title">T9</h2>
+							<button class="variation__replay" type="button" aria-controls="v09-text v09-big" aria-describedby="v09-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v09-text">
+							<p data-line>20:15. On his old phone with number keys,</p>
+							<p data-line>her father types a message, slowly:</p>
+							<p data-line>good luck, eat well, come home soon.</p>
+							<p data-line>He reads it over, and saves it,</p>
+							<p data-line>and puts the phone back in his pocket.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v09-big">
+							<p data-line>HOME SOON</p>
+						</div>
+					</section>
+					<section class="variation" id="v10" data-variation="find-all" aria-labelledby="v10-title">
+						<header class="variation__head">
+							<span class="variation__num">10</span>
+							<h2 class="variation__title" id="v10-title">Find All</h2>
+							<button class="variation__replay" type="button" aria-controls="v10-text v10-big" aria-describedby="v10-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v10-text">
+							<p data-line>20:35. The ticket isn't in the suitcase,</p>
+							<p data-line>or her coat, or on the counter.</p>
+							<p data-line>Everyone looks, even the cook.</p>
+							<p data-line>Her grandmother finds it in her apron,</p>
+							<p data-line>where she must have kept it all day.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v10-big">
+							<p data-line>FOUND IT</p>
+						</div>
+					</section>
+					<section class="variation" id="v11" data-variation="collaborators" aria-labelledby="v11-title">
+						<header class="variation__head">
+							<span class="variation__num">11</span>
+							<h2 class="variation__title" id="v11-title">Collaborators</h2>
+							<button class="variation__replay" type="button" aria-controls="v11-text v11-big" aria-describedby="v11-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v11-text">
+							<p data-line>20:45. On the back of a menu, three hands</p>
+							<p data-line>write to her at once:</p>
+							<p data-line>the cook's recipe for the broth,</p>
+							<p data-line>the times of every ferry coming back,</p>
+							<p data-line>and one word from her father, underlined.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v11-big">
+							<p data-line>ONE WORD</p>
+						</div>
+					</section>
+					<section class="variation" id="v12" data-variation="live-captions" aria-labelledby="v12-title">
+						<header class="variation__head">
+							<span class="variation__num">12</span>
+							<h2 class="variation__title" id="v12-title">Live Captions</h2>
+							<button class="variation__replay" type="button" aria-controls="v12-text v12-big" aria-describedby="v12-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v12-text">
+							<p data-line>20:48. The television above the counter</p>
+							<p data-line>has the sound off. Nobody needs it.</p>
+							<p data-line>Everyone reads the caption twice:</p>
+							<p data-line>calm crossing tonight, rain later.</p>
+							<p data-line>Her father reads it a third time.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v12-big">
+							<p data-line>SOUND OFF</p>
+							<p data-line>RAIN LATER</p>
+						</div>
+					</section>
+					<section class="variation" id="v13" data-variation="voice-note" aria-labelledby="v13-title">
+						<header class="variation__head">
+							<span class="variation__num">13</span>
+							<h2 class="variation__title" id="v13-title">Voice Note</h2>
+							<button class="variation__replay" type="button" aria-controls="v13-text v13-big" aria-describedby="v13-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v13-text">
+							<p data-line>21:10. Past the breakwater, Hana's phone lights:</p>
+							<p data-line>a voice note from the end of the pier,</p>
+							<p data-line>four minutes of wind, a gull, his boots,</p>
+							<p data-line>and somewhere in the middle, goodnight.</p>
+							<p data-line>She plays it twice to catch the word.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v13-big">
+							<p data-line>MOSTLY WIND</p>
+						</div>
+					</section>
+					<section class="variation" id="v14" data-variation="speed-reader" aria-labelledby="v14-title">
+						<header class="variation__head">
+							<span class="variation__num">14</span>
+							<h2 class="variation__title" id="v14-title">Speed Reader</h2>
+							<button class="variation__replay" type="button" aria-controls="v14-text v14-big" aria-describedby="v14-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v14-text">
+							<p data-line>21:20. On deck she reads the safety card</p>
+							<p data-line>fast, all the way through, and again,</p>
+							<p data-line>so she won't look back at the lights.</p>
+							<p data-line>Round her wrist, a paper streamer</p>
+							<p data-line>that tore as the ferry pulled away.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v14-big">
+							<p data-line>DON'T LOOK BACK</p>
+						</div>
+					</section>
+					<section class="variation" id="v15" data-variation="screen-reader" aria-labelledby="v15-title">
+						<header class="variation__head">
+							<span class="variation__num">15</span>
+							<h2 class="variation__title" id="v15-title">Screen Reader</h2>
+							<button class="variation__replay" type="button" aria-controls="v15-text v15-big" aria-describedby="v15-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v15-text">
+							<p data-line>21:35. At home, her grandmother asks the tablet</p>
+							<p data-line>to read the ferry times out loud,</p>
+							<p data-line>though she wrote every one of them herself.</p>
+							<p data-line>It reads them one careful word at a time.</p>
+							<p data-line>She listens all the way to the last.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v15-big">
+							<p data-line>WORD BY WORD</p>
+						</div>
+					</section>
+					<section class="variation" id="v16" data-variation="filament" aria-labelledby="v16-title">
+						<header class="variation__head">
+							<span class="variation__num">16</span>
+							<h2 class="variation__title" id="v16-title">Filament</h2>
+							<button class="variation__replay" type="button" aria-controls="v16-text v16-big" aria-describedby="v16-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v16-text">
+							<p data-line>21:50. The lamps come on along the wall.</p>
+							<p data-line>The water turns the colour of ink</p>
+							<p data-line>and holds every light twice.</p>
+							<p data-line>Her father stays on the pier</p>
+							<p data-line>until the ferry is just one more of them.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v16-big">
+							<p data-line>LAMPS ON</p>
+						</div>
+					</section>
+					<section class="variation" id="v17" data-variation="photocopy" aria-labelledby="v17-title">
+						<header class="variation__head">
+							<span class="variation__num">17</span>
+							<h2 class="variation__title" id="v17-title">Photocopy</h2>
+							<button class="variation__replay" type="button" aria-controls="v17-text v17-big" aria-describedby="v17-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v17-text">
+							<p data-line>23:15. The café is closing. On the window,</p>
+							<p data-line>Hana's name has started to run,</p>
+							<p data-line>each letter fainter than the one before.</p>
+							<p data-line>The cook wipes every table</p>
+							<p data-line>and leaves that pane alone.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v17-big">
+							<p data-line>LEFT ALONE</p>
+						</div>
+					</section>
+					<section class="variation" id="v18" data-variation="photon" aria-labelledby="v18-title">
+						<header class="variation__head">
+							<span class="variation__num">18</span>
+							<h2 class="variation__title" id="v18-title">Photon</h2>
+							<button class="variation__replay" type="button" aria-controls="v18-text v18-big" aria-describedby="v18-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v18-text">
+							<p data-line>00:40. The harbour lights go out one by one.</p>
+							<p data-line>Her father photographs the sky for her</p>
+							<p data-line>and gets a picture of nothing but grain.</p>
+							<p data-line>He sends it anyway.</p>
+							<p data-line>From somewhere at sea, one comes back.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v18-big">
+							<p data-line>NOTHING BUT GRAIN</p>
+						</div>
+					</section>
+					<section class="variation" id="v19" data-variation="caustics" aria-labelledby="v19-title">
+						<header class="variation__head">
+							<span class="variation__num">19</span>
+							<h2 class="variation__title" id="v19-title">Caustics</h2>
+							<button class="variation__replay" type="button" aria-controls="v19-text v19-big" aria-describedby="v19-title">Replay</button>
+						</header>
+						<div class="variation__text" id="v19-text">
+							<p data-line>02:30. The tide turns under the boats,</p>
+							<p data-line>and the moon breaks on the water in pieces</p>
+							<p data-line>that keep finding their way back together.</p>
+							<p data-line>Whatever went out with it tonight</p>
+							<p data-line>is already on its way back in.</p>
+						</div>
+						<div class="variation__text variation__text--big" id="v19-big">
+							<p data-line>THE TIDE TURNS</p>
+						</div>
+					</section>
+					<footer class="end">
+						<a class="end__top" href="#top">Back to top</a>
+					</footer>
+				</main>
+			</div>
+		</div>
+		<script src="js/gsap.min.js"></script>
+		<script src="js/ScrollTrigger.min.js"></script>
+		<script src="js/ScrollSmoother.min.js"></script>
+		<script src="js/SplitText.min.js"></script>
+		<script src="js/Flip.min.js"></script>
+		<script type="module" src="js/index.js"></script>
+	</body>
+</html>

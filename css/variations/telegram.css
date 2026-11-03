@@ -1,0 +1,13 @@
+/* 03 Telegram */
+
+[data-effect='telegram'] .char {
+	opacity: 0;
+}
+
+/* The telegram: small words and the punctuation at the end of words out of
+   the line, so the spaces around them collapse to one */
+[data-effect='telegram'] .is-packed .word--small,
+[data-effect='telegram'] .is-packed .char--punctuation {
+	/* over the inline display SplitText gives each word and character */
+	display: none !important;
+}

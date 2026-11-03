@@ -1,0 +1,59 @@
+/* 11 Collaborators */
+
+/* The carets are placed relative to the text */
+[data-effect='collaborators'] {
+	position: relative;
+}
+
+/* A letter fades from its writer's colour to the text's */
+[data-effect='collaborators'] .char {
+	opacity: 0;
+	transition: color 0.6s ease-out;
+}
+
+/* A letter just typed, in its writer's colour */
+[data-effect='collaborators'] .char.is-fresh {
+	color: var(--person);
+	transition: none;
+}
+
+/* The layer over the text holding the carets */
+[data-effect='collaborators'] .collabs {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+
+/* A person's caret, moved to where their next letter goes */
+[data-effect='collaborators'] .collab {
+	position: absolute;
+	left: 0;
+	top: 0;
+	white-space: nowrap;
+	color: var(--person);
+	visibility: hidden;
+	will-change: transform;
+}
+
+/* A bar as high and as low as the text's letters reach, as the effect
+   measures them in the text's font, centred on the gap between two letters */
+[data-effect='collaborators'] .collab__bar {
+	--width: max(2px, 0.04em);
+	position: relative;
+	display: inline-block;
+	width: var(--width);
+	height: calc(var(--caret-ascent, 0.72em) + var(--caret-descent, 0em));
+	margin-left: calc(var(--width) / -2);
+	vertical-align: calc(-1 * var(--caret-descent, 0em));
+	background: currentColor;
+}
+
+/* The small flag on top of the caret, in the writer's colour */
+[data-effect='collaborators'] .collab__flag {
+	position: absolute;
+	left: 0;
+	bottom: 100%;
+	width: max(6px, 0.22em);
+	height: max(4px, 0.14em);
+	background: currentColor;
+}

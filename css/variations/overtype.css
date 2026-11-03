@@ -1,0 +1,52 @@
+/* 05 Overtype */
+
+/* An old line longer than the new one never scrolls the page sideways */
+[data-effect='overtype'] {
+	overflow-x: clip;
+}
+
+/* The new text and the old one share one place, and nothing is cut off, so
+   the knocked out letters can fall well past the line */
+[data-effect='overtype'] [data-line] {
+	position: relative;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+}
+
+[data-effect='overtype'] .typed,
+[data-effect='overtype'] .old {
+	grid-area: 1 / 1;
+}
+
+/* The old text, dimmer, under the new one, on one row so the line is only as
+   tall as the new text */
+[data-effect='overtype'] .old {
+	white-space: nowrap;
+	color: var(--color-text, rgb(255 255 255 / 50%));
+	pointer-events: none;
+	user-select: none;
+}
+
+/* An old letter falls and tips around its foot */
+[data-effect='overtype'] .old .char {
+	transform-origin: 50% 100%;
+}
+
+/* The cursor, moved to each stop */
+[data-effect='overtype'] .cursor {
+	position: absolute;
+	left: 0;
+	top: 0;
+	white-space: nowrap;
+	pointer-events: none;
+	visibility: hidden;
+}
+
+/* An underscore, just under the baseline */
+[data-effect='overtype'] .cursor__underscore {
+	display: inline-block;
+	width: 0.5em;
+	height: 0.08em;
+	vertical-align: -0.1em;
+	background: currentColor;
+}

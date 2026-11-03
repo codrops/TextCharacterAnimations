@@ -1,0 +1,33 @@
+/* 13 Voice Note */
+
+/* The bars are placed relative to the text */
+[data-effect='voice-note'] {
+	position: relative;
+}
+
+[data-effect='voice-note'] .char {
+	opacity: 0;
+}
+
+/* The layer over the text holding the waveform */
+[data-effect='voice-note'] .bars {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+
+/* A letter's bar: a short upright stroke in the accent colour with rounded
+   ends, as tall as the voice makes it; centred on the spot it's moved to, so
+   it grows and shrinks from its middle; thicker on big text */
+[data-effect='voice-note'] .bar {
+	--width: max(2px, 0.1em);
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: var(--width);
+	height: var(--level, 0.5em);
+	margin: calc(var(--level, 0.5em) / -2) 0 0 calc(var(--width) / -2);
+	border-radius: var(--width);
+	background: var(--color-accent, #e23e1d);
+	transform-origin: 50% 50%;
+}

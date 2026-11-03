@@ -1,0 +1,52 @@
+/* 02 Proofread */
+
+/* The effect places its pieces against each line */
+[data-effect='proofread'] [data-line] {
+	position: relative;
+}
+
+/* The carets travel across the lines, so they're placed in the whole block */
+[data-effect='proofread'] {
+	position: relative;
+}
+
+[data-effect='proofread'] .char,
+[data-effect='proofread'] .slip {
+	opacity: 0;
+}
+
+/* A letter that is only in the typed line, gone once it's mended */
+[data-effect='proofread'] .slip {
+	display: inline-block;
+	position: relative;
+}
+
+/* A letter left out, or replaced by a wrong key, until it's mended */
+[data-effect='proofread'] .is-out {
+	/* over the inline display SplitText gives each character */
+	display: none !important;
+}
+
+/* The caret, moved to after the last glyph typed */
+[data-effect='proofread'] .caret {
+	position: absolute;
+	left: 0;
+	top: 0;
+	white-space: nowrap;
+	pointer-events: none;
+	visibility: hidden;
+	will-change: transform;
+}
+
+/* A bar as high and as low as the text's letters reach, as the effect
+   measures them in the text's font (about a capital's height on the baseline
+   until then), centred on the gap between two letters; thicker on big text */
+[data-effect='proofread'] .caret__bar {
+	--width: max(2.5px, 0.06em);
+	display: inline-block;
+	width: var(--width);
+	height: calc(var(--caret-ascent, 0.72em) + var(--caret-descent, 0em));
+	margin-left: calc(var(--width) / -2);
+	vertical-align: calc(-1 * var(--caret-descent, 0em));
+	background: currentColor;
+}
